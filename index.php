@@ -1,6 +1,8 @@
 <?php
 require_once ('./inc/functions.php');
 $running=0;
+$action='';
+$action=$_GET["action"];
 ?>
 
 <html>
@@ -13,17 +15,55 @@ $running=0;
 <div id="wrapper">
 <img src="http://dl.dropbox.com/u/2854558/MARSOC_MUT.png" width="500px" />
 <div id="content">
-<?php $running=check_pid();
+<?php
+
+switch ($action) {
+
+case 'start' : 
+	start_server();
+	sleep(5); 
+	echo('<span class="danger">Server started!</span>'); 
+	echo('<a href="index.php"><span class="button">Go back</span></a>');
+	break;
+case 'stop' : 
+	kill_server();
+	sleep(5); 
+	echo('<span class="danger">Server stopped!</span>');
+	echo('<a href="index.php"><span class="button">Go back</span></a>'); 
+	break;
+case 'upload' :
+	?>
+	<form action="index.php?action=proccess_file" method="POST" enctype="multipart/form-data">
+	<input type="file" name="mission_file"><br />
+	<input type="submit" value="upload">
+	</form>
+	<?php 
+	break;
+case 'proccess_file' :
+	$mission_name = $_FILES['mission_file']['name'];
+	$mission_name = strtolower($mission_name);
+	$file_type = $_FILES['mission_file']['type'];
+	echo("$mission_name has been uploaded.<br /><br />");
+	if ($file_type=='application/octet-stream')
+	{
+	  move_uploaded_file($_FILES['mission_file']['tmp_name'], "./upload/$mission_name");
+	  shell_exec("/usr/bin/sudo ./inc/cp_file.sh ./upload/$mission_name");
+	}
+case '' : 
+
+ $running=check_pid();
 
 if($running==1)
   {
     echo('Apparently the server runs at the moment.<br /> Get on Teamspeak, make sure noone is playing or <br /> testing on it. After you made 100% sure, you can<br /><br />');
-    echo('<span class="danger"><a href="index.php?action=stop">STOP THE SERVER!</a></span>');
+    echo('<a href="index.php?action=stop"><span class="button danger">STOP THE SERVER!</span></a>');
   } else {
     echo('The server is not running. Now you can <br />');
     echo('<a href="index.php?action=upload"><span class="button">Upload a Mission</span></a><br />');
     echo('<a href="index.php?action=start"><span class="button">Start the server</span></a>');
   }
+break;
+}
 ?>
 </div>
 </div>

@@ -1,0 +1,7 @@
+AuthUserFile /var/www/admin/.htpasswd
+AuthGroupFile /dev/null
+AuthName "MARSOC Testserver Mission Upload Tool"
+AuthType Basic
+<Limit GET>
+require valid-user
+</Limit>

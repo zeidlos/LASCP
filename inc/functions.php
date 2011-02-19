@@ -23,7 +23,14 @@ function kill_server()
 
 function start_server()
 {
-  shell_exec("/usr/bin/sudo /var/www/admin/inc/run_server.sh");
-}
+  $pid_file = shell_exec("/var/www/admin/inc/server.pid");
+  if (!file_exists($pid_file))
+  {
+    shell_exec("/usr/bin/sudo /var/www/admin/inc/run_server.sh");
+  }
+ }
+
+
+
 ?>
 

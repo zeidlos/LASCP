@@ -50,3 +50,7 @@ img {
   width:250px;
 }
 
+.danger {
+  color:red;
+  font-weight:bold;
+}

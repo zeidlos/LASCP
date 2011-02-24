@@ -1,5 +1,6 @@
 <?php
 require_once ('./inc/functions.php');
+require_once('./inc/config.php');
 $running=0;
 $action='';
 $action=$_GET["action"];
@@ -13,15 +14,18 @@ $action=$_GET["action"];
 <body>
 
 <div id="wrapper">
-<img src="http://dl.dropbox.com/u/2854558/MARSOC_MUT.png" width="500px" />
+<img src="<?php echo($header_img); ?>" width="500px" />
 <div id="content">
 <?php
+echo "<b>$server_name on ";
+echo $_SERVER['SERVER_ADDR'];
+echo '</b><br /><br />';
 
 switch ($action) {
 
 case 'start' : 
 	start_server();
-	sleep(5); 
+	sleep(15); 
 	echo('<span class="danger">Server started!</span>'); 
 	echo('<a href="index.php"><span class="button">Go back</span></a>');
 	break;
@@ -43,12 +47,16 @@ case 'proccess_file' :
 	$mission_name = $_FILES['mission_file']['name'];
 	$mission_name = strtolower($mission_name);
 	$file_type = $_FILES['mission_file']['type'];
-	echo("$mission_name has been uploaded.<br /><br />");
+	
 	if ($file_type=='application/octet-stream')
 	{
+	  echo("$mission_name has been uploaded.<br /><br />");
 	  move_uploaded_file($_FILES['mission_file']['tmp_name'], "./upload/$mission_name");
-	  shell_exec("/usr/bin/sudo ./inc/cp_file.sh ./upload/$mission_name");
+	  shell_exec("/usr/bin/sudo -u marsoc ./inc/cp_file.sh ./upload/$mission_name");
+	} else {
+	  echo("Wrong file format");
 	}
+	break;
 case '' : 
 
  $running=check_pid();

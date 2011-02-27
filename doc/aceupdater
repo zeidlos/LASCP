@@ -1,0 +1,129 @@
+#!/bin/bash
+#
+# ACE Update script for linux
+#
+# by Dr.Pulp - www.FAKKer.de
+#
+#
+#
+# READ FIRST!!!
+#
+# In order to use this script you need to have gunzip and rsync installed!
+#
+# You will also need two seperate folders to use the advantage of rsync,
+# because otherwise "tolower" will alter the filenames and rsync will download
+# them again everytime you use the script.
+#
+# You manually need to create a folder in your arma directory called userconfig/ace.
+#
+# After the script finish succsessfully, you will have new folders depending of the number
+# of mods you like to synchronize. the folders a called like the mod with a leading @.
+#
+##################################
+# Configuration start #
+##################################
+
+# Directory where the arma server is installed
+ARMA_DIR=/data/a2oa
+
+# Direcotry where rsync stores the data. DON'T use a subdirectory of your arma directory!
+ARMA_SYNC_DIR=/data/a2oa_data
+
+# List of available Mirrors. You can add new mirrors, or delete ones that are no longer functioning. Leave a blank between mirrors!
+MIRRORLIST=(six.bssnet.dk dev-heaven.net)
+
+# Mods you like to synchronize with this script. For a complete list of available mods look at http://updater.dev-heaven.net/main !
+# You can use every mod listet there -> just use the modname without @. Leave a blank between mods!
+#MODS="ffaa_terroristas isla_duala panthera fdf_podagorsk cba fran_quesh_kibrul ffaa_civiles_arabes ace namalsk acex japahto mbg_kellu six_wtk six_shl six jtd fran_sbrodj acex_pla sthud acex_sm rte"
+MODS="ace acex acex_pla acex_sm beta cba fallujah fdf_podagorsk fran_quesh_kibrul fran_sbrodj hifi_ace hifi_air hifi_sfx hifi_vehicle_weapons hifi_weapons_long isla_duala japahto lang_cz-en lang_de-en lang_hu-en mbg_celle mbg_kellu namalsk ngs_capraia panthera sap_clutter sap_everon sthud thirsk torabora"
+
+##################################
+# Advanced Configuration #
+##################################
+# Define some of the OS tool the script uses. If you encounter an error you can check is your pathnames may differ with the type command. example: type rm
+# this will tell you your exact path to your rm. in case it differs, edit this part...otherwise leave it as it is.
+RM="/bin/rm -r" 
+RSYNC="/usr/bin/rsync --times -O --no-whole-file -r --delete --progress -h --exclude=.rsync rsync://" 
+CP="/bin/cp -r" 
+GUNZIP="/bin/gunzip -r" 
+##################################
+# Configuration end #
+##################################
+
+# Create Lockfile
+
+touch /var/www/admin/inc/aceupdater.lock
+
+# Function: random mirror selection
+RANDOM_MIRROR() {
+MIRRORCOUNT=${#MIRRORLIST[*]}
+MIRRORCOUNT=`expr $MIRRORCOUNT - 1`
+MIRRORCOUNT=`expr 32767 / $MIRRORCOUNT`
+MIRROR=${MIRRORLIST[$(($RANDOM/$MIRRORCOUNT))]}
+}
+
+# Loop: deleting folder, rsync, decompress ad copy for each mod you selected
+for MOD in $MODS
+do
+$RM $ARMA_DIR/@$MOD
+INFOSYNC='Starting to synchronize '$MOD'!'
+echo ' ----------------'
+echo $INFOSYNC
+OK=1
+BAILOUT=0
+until [ "$OK" -lt "1" ]
+do
+RANDOM_MIRROR
+$RSYNC$MIRROR/rel/$MOD/./.pack/ ${ARMA_SYNC_DIR}/@$MOD
+OK=$?
+BAILOUT=`expr $BAILOUT + 1`
+if [ "$BAILOUT" -gt 10 ]
+then
+ENDE='There is a problem with rsync of mod '$MOD'! Aborting Script to prevent a loop! Check your directorys, user-rights or maybe just all mirrors are full at the moment'
+echo $ENDE
+exit
+fi
+done
+INFOCOPY='Copying '$MOD' Mod to the destination folder!'
+echo $INFOCOPY
+$CP ${ARMA_SYNC_DIR}/@$MOD ${ARMA_DIR}
+INFOZIP='Decompressing '$MOD' Mod!'
+echo $INFOZIP
+$GUNZIP ${ARMA_DIR}/@$MOD/*
+done
+
+# Converting filenames to lower case letters
+${ARMA_DIR}/tolower
+
+# copying keys, mpmissions and userconfig to the right folders
+for MOD in $MODS
+do
+if test -e ${ARMA_DIR}/@$MOD/keys
+then $CP ${ARMA_DIR}/@$MOD/keys/* ${ARMA_DIR}/keys
+fi
+if test -e ${ARMA_DIR}/@$MOD/store/keys
+  then
+    $CP ${ARMA_DIR}/@$MOD/store/keys/* ${ARMA_DIR}/keys
+else
+    if test -e ${ARMA_DIR}/@$MOD/keys
+    then 
+       $CP ${ARMA_DIR}/@$MOD/keys/* ${ARMA_DIR}/keys
+    fi
+fi
+if test -e ${ARMA_DIR}/@$MOD/mpmissions
+then $CP ${ARMA_DIR}/@$MOD/mpmissions/* ${ARMA_DIR}/mpmissions
+fi
+if test -e ${ARMA_DIR}/@$MOD/userconfig
+then
+if test -e ${ARMA_DIR}/userconfig/$MOD
+then
+$CP ${ARMA_DIR}/@$MOD/userconfig/* ${ARMA_DIR}/userconfig/$MOD/
+else
+/bin/mkdir -p ${ARMA_DIR}/userconfig/$MOD
+$CP ${ARMA_DIR}/@$MOD/userconfig/* ${ARMA_DIR}/userconfig/$MOD/
+fi
+fi
+done
+rm /var/www/admin/inc/aceupdater.lock
+exit
+

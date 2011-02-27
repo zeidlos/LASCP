@@ -1,0 +1,6 @@
+www-data ALL=(ALL) NOPASSWD: /usr/bin/sudo
+www-data ALL=(ALL) NOPASSWD: /var/www/admin/inc/run_server.sh
+www-data ALL=(ALL) NOPASSWD: /var/www/admin/inc/cp_file.sh
+www-data ALL=(ALL) NOPASSWD: /bin/rm
+www-data ALL=(ALL) NOPASSWD: /bin/kill
+www-data ALL=(ALL) NOPASSWD: /data/a2oa/aceupdater

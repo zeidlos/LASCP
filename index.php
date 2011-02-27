@@ -1,9 +1,23 @@
 <?php
-require_once ('./inc/functions.php');
+/*
+MARSOC Server Control Pannel
+Version: 0.2
+Date: 2011-02-27
+Author: Banshee
+URL: http://going4.com
+
+MARSOC Server Control Pannel is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. Permissions beyond the scope of this license may be available at http://going4.com.
+
+http://creativecommons.org/licenses/by-nc-sa/3.0/
+*/
+
 require_once('./inc/config.php');
+// or die("Couldn't load config");
+require_once ('./inc/functions.php');
+// or die("Couldn't load functions");
 $running=0;
 $action='';
-$action=$_GET["action"];
+if(!empty($_GET)) { $action=$_GET["action"]; }
 ?>
 
 <html>
@@ -22,15 +36,18 @@ echo $_SERVER['SERVER_ADDR'];
 echo '</b><br /><br />';
 
 switch ($action) {
-
+case 'update' : 
+	$output = shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$arma_dir.'aceupdater');
+	echo('Update complete');
+	break;
 case 'start' : 
-	start_server();
-	sleep(15); 
+	start_server($server_path);
+	sleep(25); 
 	echo('<span class="danger">Server started!</span>'); 
 	echo('<a href="index.php"><span class="button">Go back</span></a>');
 	break;
 case 'stop' : 
-	kill_server();
+	kill_server($server_path);
 	sleep(5); 
 	echo('<span class="danger">Server stopped!</span>');
 	echo('<a href="index.php"><span class="button">Go back</span></a>'); 
@@ -52,14 +69,14 @@ case 'proccess_file' :
 	{
 	  echo("$mission_name has been uploaded.<br /><br />");
 	  move_uploaded_file($_FILES['mission_file']['tmp_name'], "./upload/$mission_name");
-	  shell_exec("/usr/bin/sudo -u marsoc ./inc/cp_file.sh ./upload/$mission_name");
+	  shell_exec('/usr/bin/sudo -u '.$sudo_user.' /inc/cp_file.sh ./upload/$mission_name');
 	} else {
 	  echo("Wrong file format");
 	}
 	break;
 case '' : 
 
- $running=check_pid();
+ $running=check_pid($server_path);
 
 if($running==1)
   {
@@ -69,6 +86,7 @@ if($running==1)
     echo('The server is not running. Now you can <br />');
     echo('<a href="index.php?action=upload"><span class="button">Upload a Mission</span></a><br />');
     echo('<a href="index.php?action=start"><span class="button">Start the server</span></a>');
+    echo('<a href="index.php?action=update"><span class="button">Update the server</span></a>');
   }
 break;
 }

@@ -39,6 +39,7 @@ switch ($action) {
 case 'update' : 
 	$output = shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$arma_dir.'aceupdater');
 	echo('Update complete');
+	echo('<a href="index.php"><span class="button">Go back</span></a>');
 	break;
 case 'start' : 
 	start_server($server_path);
@@ -54,6 +55,7 @@ case 'stop' :
 	break;
 case 'upload' :
 	?>
+	<h2>PBO Files only.</h2>
 	<form action="index.php?action=proccess_file" method="POST" enctype="multipart/form-data">
 	<input type="file" name="mission_file"><br />
 	<input type="submit" value="upload">
@@ -65,14 +67,17 @@ case 'proccess_file' :
 	$mission_name = strtolower($mission_name);
 	$file_type = $_FILES['mission_file']['type'];
 	
-	if ($file_type=='application/octet-stream')
+/*	if ($file_type=='application/octet-stream')
 	{
+*/
+	  echo("$file_type");
 	  echo("$mission_name has been uploaded.<br /><br />");
 	  move_uploaded_file($_FILES['mission_file']['tmp_name'], "./upload/$mission_name");
-	  shell_exec('/usr/bin/sudo -u '.$sudo_user.' /inc/cp_file.sh ./upload/$mission_name');
-	} else {
+	  shell_exec('/usr/bin/sudo -u '.$sudo_user.' ./inc/cp_file.sh ./upload/'.$mission_name.'');
+/*	} else {
 	  echo("Wrong file format");
 	}
+*/
 	break;
 case '' : 
 

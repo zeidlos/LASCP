@@ -24,7 +24,7 @@ SETUP:
 5. chmod +x on inc/cp_file.sh and inc/run_server.sh if needed.
 6. Change the path in inc/cp_file.sh and inc/run_server.sh to reflect your ArmA2 directory.
 7. Change the settings in inc/config.php
-
+8. Change the max size for your fileupload in php.ini
 
 TODO-List:
 * Add installer

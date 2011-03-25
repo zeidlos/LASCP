@@ -25,7 +25,17 @@ body {
 }
 
 #content {
-margin-left:120px;
+  margin-left:120px;
+}
+
+#footer {
+  margin-left:120px;
+  color:rgb(100,100,100);
+  margin-top:100px;
+}
+
+#footer a {
+  color:rgb(100,100,100);
 }
 
 a {
@@ -65,5 +75,10 @@ img {
 
 .danger {
   color:red;
+  font-weight:bold;
+}
+
+.success {
+  color:green;
   font-weight:bold;
 }

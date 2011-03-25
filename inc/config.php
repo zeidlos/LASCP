@@ -24,10 +24,14 @@ $sudo_user = 'marsoc';
 
 // Webdir path
 // Path where this tool resides in
-$server_path ='/var/www/admin/';
+$server_path ='/var/www/LASCP/';
 
 // ArmA directory path
 // Path where ArmA files reside in
 $arma_dir ='/data/a2oa/';
+
+// Modlist
+$modlist ='@cba;@ace;@acex;@acex_sm;@fdf_podagorsk;@thirsk;@isla_duala;@glt_missilebox;@torabora;@fallujah;@ngs_capraia;';
+// $modlist ='@cba;@ace;@acex;@acex_sm;@ngs_capraia;';
 
 ?>

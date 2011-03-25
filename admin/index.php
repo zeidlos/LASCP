@@ -11,9 +11,9 @@ MARSOC Server Control Pannel is licensed under a Creative Commons Attribution-No
 http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
 
-require_once('./inc/config.php');
+require_once('../inc/config.php');
 //or die("Couldn't load config");
-require_once ('./inc/functions.php');
+require_once('../inc/functions.php');
 //or die("Couldn't load functions");
 $running=0;
 $action='';
@@ -21,8 +21,8 @@ if(!empty($_GET)) { $action=$_GET["action"]; }
 ?>
 
 <html>
-<head><title><?php echo($server_name);?> - Linux ArmA Server Control Panel</title>
-<link href="./css/style.css" rel="stylesheet" type="text/css">
+<head><title><?php echo($server_name);?> - Linux ArmA Server Control Panel - Settings</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -37,15 +37,12 @@ echo '</b><br /><br />';
 
 switch ($action) {
 
-case 'update' :
-	echo('<p class="danger">Please do not reload or leave this page. <br />This may take several minutes.</p>'); 
-	$output = shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$arma_dir.'aceupdater');
-	echo('<p class="success">Update complete</p>');
-	echo('<a href="index.php"><span class="button">Go back</span></a>');
+case 'update_mods' :
+	
 	break;
 
 case 'start' : 
-	start_server($server_path, $modlist);
+	start_server($server_path);
 	while(!file_exists($server_path.'inc/server.pid')) 
 	{
 	  sleep(5);

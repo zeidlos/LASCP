@@ -12,4 +12,4 @@
 
 # Change dir to your ArmA2 directory
 cd /data/a2oa
-screen -A -m -d -S arma2oa_server ./run_server.m.test >&1
+screen -A -m -d -S arma2oa_server /data/a2oa/server -cpuCount=8 -netlog -profiles. -maxplayers=60 -config=server.cfg -mod="$1" -cfg=basic.cfg -pid=/var/www/LASCP/inc/server.pid >&1

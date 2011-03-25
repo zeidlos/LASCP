@@ -12,6 +12,7 @@ http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
 
 
+include($server_path.'inc/config.php');
 
 function check_pid($server_path) 
 {
@@ -34,16 +35,14 @@ function kill_server($server_path)
   }
 }
 
-function start_server($server_path)
+function start_server($server_path, $modlist)
 {
   $pid_file = $server_path.'inc/server.pid';
   if (!file_exists($pid_file))
   {
-    shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'inc/run_server.sh');
+    shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'inc/run_server.sh "'. $modlist .'"');
   }
  }
-
-
 
 ?>
 

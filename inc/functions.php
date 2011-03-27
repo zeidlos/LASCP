@@ -1,4 +1,5 @@
 <?php
+include($server_path.'inc/config.php');
 /*
 MARSOC Server Control Pannel
 Version: 0.2
@@ -12,35 +13,22 @@ http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
 
 
-include($server_path.'inc/config.php');
-
-function check_pid($server_path) 
+function server_status()
 {
-  $pid_file = $server_path.'inc/server.pid';
-  if (file_exists($pid_file))
-  {
-    $pid = shell_exec('cat '.$server_path.'inc/server.pid');
-    return 1;
-  }
+  $server_status = shell_exec("ps aux | grep -v grep | grep arma2oaserver");
+  return($server_status);
 }
 
-function kill_server($server_path)
+function stop_server($server_path)
 {
-  $pid_file = $server_path.'inc/server.pid';
-  if (file_exists($pid_file)) 
-  {
-    $pid = shell_exec('cat '.$server_path.'inc/server.pid'); 
-    shell_exec("/usr/bin/sudo -u marsoc /bin/kill $pid");
-    shell_exec('/usr/bin/sudo -u marsoc rm '.$server_path.'inc/server.pid');
-  }
+  shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'/inc/arma2oaserver stop');
 }
 
-function start_server($server_path, $modlist)
+function start_server($server_path)
 {
-  $pid_file = $server_path.'inc/server.pid';
-  if (!file_exists($pid_file))
+  if (!$server_status);
   {
-    shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'inc/run_server.sh "'. $modlist .'"');
+    shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'inc/arma2oaserver start');
   }
  }
 

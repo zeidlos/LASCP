@@ -45,12 +45,15 @@ case 'update' :
 	break;
 
 case 'start' : 
-	start_server($server_path, $modlist);
-	while(!file_exists($server_path.'inc/server.pid')) 
+	start_server($server_path);
+	$server_status = server_status();
+	while(!$server_status) 
 	{
+	  $server_status = server_status();
 	  sleep(5);
 	}
-	if(file_exists($server_path.'inc/server.pid'))
+	$server_status = server_status();
+	if ($server_status);
 	{ 
 	  echo('<span class="success">Server started!</span>'); 
 	  echo('<a href="index.php"><span class="button">Go back</span></a>');
@@ -58,7 +61,7 @@ case 'start' :
 	break;
 
 case 'stop' : 
-	kill_server($server_path);
+	stop_server($server_path);
 	sleep(5); 
 	echo('<span class="success">Server stopped!</span>');
 	echo('<a href="index.php"><span class="button">Go back</span></a>'); 
@@ -95,8 +98,8 @@ case 'proccess_file' :
 	break;
 
 case '' : 
-	$running=check_pid($server_path);
-	if($running==1)
+	$server_status = server_status();
+	if($server_status)
 	{
 	  echo('Apparently the server runs at the moment.<br /> Get on Teamspeak, make sure noone is playing or <br /> testing on it. After you made 100% sure, you can<br /><br />');
 	  echo('<a href="index.php?action=stop"><span class="button danger">STOP THE SERVER!</span></a>');

@@ -1,15 +1,18 @@
 <?php
 /*
-MARSOC Server Control Pannel
+Tier1 Server Control Pannel
 Version: 0.2
 Date: 2011-02-27
 Author: Banshee
-URL: http://going4.com
+Edit: BoSSMan_DK - 2011-04-27
+URL: http://tier1ops.eu
 
-MARSOC Server Control Pannel is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. Permissions beyond the scope of this license may be available at http://going4.com.
+Tier1 Server Control Pannel is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. Permissions beyond the scope of this license may be available at http://going4.com.
 
 http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
+
+echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
 
 require_once('./inc/config.php');
 //or die("Couldn't load config");
@@ -19,16 +22,23 @@ $running=0;
 $action='';
 if(!empty($_GET)) { $action=$_GET["action"]; }
 ?>
-
-<html>
-<head><title><?php echo($server_name);?> - Linux ArmA Server Control Panel</title>
-<link href="./css/style.css" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" title="A++" />
 </head>
 <body>
-
 <div id="wrapper">
-<img src="<?php echo($header_img); ?>" width="500px" /><br />
+
+	</div>
+	
+	<div id="header">
+    <div id="header_img">
+      &nbsp;
+    </div>
+
+	</div>
+
 <div id="content">
 <?php
 echo "<b>$server_name on ";
@@ -39,6 +49,9 @@ switch ($action) {
 
 case 'update' :
 	echo('<p class="danger">Please do not reload or leave this page. <br />This may take several minutes.</p>'); 
+	echo "<script language='javascript'> window.location = \"index.php?action=update2\";</script>";
+	break;
+case 'update2' :
 	$output = shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$arma_dir.'aceupdater');
 	echo('<p class="success">Update complete</p>');
 	echo('<a href="index.php"><span class="button">Go back</span></a>');
@@ -116,6 +129,7 @@ case '' :
 ?>
 </div>
 <div id="footer">
-<a href="http://dev-heaven.net/projects/lascp">LASCP</a> v0.2 brought to you by <a href="http://going4.com">MARSOC</a>
+<a href="http://dev-heaven.net/projects/lascp">LASCP</a> v0.2 brought to you by <a href="http://tier1ops.eu">Tier1</a>
+</div>
 </div>
 </div>

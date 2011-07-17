@@ -1,4 +1,4 @@
-AuthUserFile /var/www/admin/.htpasswd
+AuthUserFile /var/www/LASCP/.htpasswd
 AuthGroupFile /dev/null
 AuthName "MARSOC Testserver Mission Upload Tool"
 AuthType Basic

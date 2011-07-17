@@ -10,15 +10,15 @@
 #======== MUST BE EDITED MANUALLY TO FIT YOUR SYSTEM PARAMETERS ========
 #=======================================================================
 ARMA_DIR=/data/a2oa
-CONFIG=../tier1ops_main.cfg
-PORT=2302
+CONFIG=testserver.cfg
+PORT=2323
 WEB_DIR=/var/www/LASCP
 PIDFILE=${ARMA_DIR}/${PORT}.pid
 RUNFILE=${ARMA_DIR}/${PORT}.run
-LOGFILE=${WEB_DIR}/logfile.txt
+LOGFILE=${WEB_DIR}/testlogfile.txt
 SERVER=${ARMA_DIR}/server
 OTHERPARAMS=-cpucount=8
-MODFILE=${WEB_DIR}/inc/mods_acre.inc
+MODFILE=${WEB_DIR}/inc/mods_testserver.inc
 MODS=$(< ${MODFILE})
 
 #=======================================================================

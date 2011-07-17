@@ -12,7 +12,6 @@ MARSOC Server Control Pannel is licensed under a Creative Commons Attribution-No
 http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
 
-
 function server_status()
 {
   $server_status = shell_exec("ps aux | grep -v grep | grep arma2oaserver");
@@ -22,14 +21,13 @@ function server_status()
 function stop_server($server_path)
 {
   shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'/inc/arma2oaserver stop');
+//  shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'/inc/testserver stop');
 }
 
 function start_server($server_path)
 {
-  if (!$server_status);
-  {
     shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'inc/arma2oaserver start');
-  }
+//    shell_exec('/usr/bin/sudo -u marsoc '.$server_path.'inc/testserver start');
  }
 
 ?>

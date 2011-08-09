@@ -13,7 +13,7 @@ http://creativecommons.org/licenses/by-nc-sa/3.0/
 
 
 body {
-  background-color:black;
+  background-color:rgb(42,42,42);
   color:white;
   font-family: 'Droid Sans', Arial, serif;
   text-align:center;
@@ -29,6 +29,49 @@ body {
   margin-left:120px;
   text-align:left;
 }
+
+#header {
+    width: 960px;
+    margin: auto;
+    height: 150px;
+}
+
+.navigation a{
+    color:rgb(200,200,200);
+    text-decoration:none;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.navigation li{
+    margin:5px;
+    list-style:none;
+    display: inline;
+    padding:0px 0px 0px 20px;
+}
+
+.users {
+    background-image:url("../img/icons/user.png");
+    background-repeat:no-repeat;
+}
+
+.settings {
+    background-image:url("../img/icons/config.png");
+    background-repeat:no-repeat;
+}
+
+.servers {
+    background-image:url("../img/icons/sitemap.png");
+    background-repeat:no-repeat;
+}
+
+.home {
+    background-image:url("../img/icons/home.png");
+    background-repeat:no-repeat;
+}
+
 
 #content {
   margin-left:120px;
@@ -87,4 +130,16 @@ img {
 .success {
   color:green;
   font-weight:bold;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
 }

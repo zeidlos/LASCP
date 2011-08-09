@@ -12,7 +12,6 @@ Tier1 Server Control Pannel is licensed under a Creative Commons Attribution-Non
 http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
 
-echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
 
 require_once('./inc/config.php');
 //or die("Couldn't load config");

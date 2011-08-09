@@ -53,22 +53,22 @@ body {
 }
 
 .users {
-    background-image:url("../img/icons/user.png");
+    background-image:url("../img/icons/16px/user.png");
     background-repeat:no-repeat;
 }
 
 .settings {
-    background-image:url("../img/icons/config.png");
+    background-image:url("../img/icons/16px/config.png");
     background-repeat:no-repeat;
 }
 
 .servers {
-    background-image:url("../img/icons/sitemap.png");
+    background-image:url("../img/icons/16px/sitemap.png");
     background-repeat:no-repeat;
 }
 
 .home {
-    background-image:url("../img/icons/home.png");
+    background-image:url("../img/icons/16px/home.png");
     background-repeat:no-repeat;
 }
 

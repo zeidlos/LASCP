@@ -31,7 +31,7 @@ body {
 }
 
 #header {
-    width: 560px;
+    width: 660px;
     margin: auto;
     height: 150px;
 }
@@ -70,6 +70,12 @@ body {
 .home {
     background-image:url("../img/icons/16px/home.png");
     background-repeat:no-repeat;
+}
+
+.logout {
+    background-image:url("../img/icons/16px/sign-out.png");
+    background-repeat:no-repeat;
+    font-style: italic;
 }
 
 

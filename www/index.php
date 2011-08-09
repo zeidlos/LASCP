@@ -1,10 +1,10 @@
 <?php
 /*
 Tier1 Server Control Pannel
-Version: 0.2
+Version: 0.4
 Date: 2011-02-27
 Author: Banshee
-Edit: BoSSMan_DK - 2011-04-27
+Edit: BoSSMan_DK - 2011-08-09
 URL: http://tier1ops.eu
 
 Tier1 Server Control Pannel is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. Permissions beyond the scope of this license may be available at http://going4.com.
@@ -32,15 +32,18 @@ if(!empty($_GET)) { $action=$_GET["action"]; }
 	
 <div id="header">
     <span class="left">
-        <ul>
-            <li>
+        <ul class="navigation admin">
+            <li class="home">
+                <a href="index.php">Home</a>
+            </li>
+            <li class="settings">
                 <a href="admin.php?action=settings">Settings</a>
             </li>
-            <li>
-                <a href="admin.php?action=users">Users</a>
+            <li class="users">
+                <a href="admin.php?action=users">Usermanagement</a>
             </li>
-            <li>
-                <a href="admin.php?action=servers">Servers</a>
+            <li class="servers">
+                <a href="admin.php?action=servers">Virtual Servers</a>
             </li>
         </ul>
     </span>
@@ -140,7 +143,7 @@ if(!empty($_GET)) { $action=$_GET["action"]; }
     ?>
 </div>
 <div id="footer">
-<a href="http://dev-heaven.net/projects/lascp">LASCP</a> v0.2 brought to you by <a href="http://tier1ops.eu">Tier1</a>
+<a href="http://dev-heaven.net/projects/lascp">LASCP</a> v0.4 brought to you by <a href="http://tier1ops.eu">Tier1</a>
 </div>
 </div>
 </body>

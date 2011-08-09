@@ -22,15 +22,15 @@ $header_img = 'http://tier1ops.eu/forum/styles/we_universal/theme/images/header_
 $server_name = 'Tier1 Operations';
 
 // Sudo User. User wich the server will own the server process
-$sudo_user = 'marsoc';
+$sudo_user = 'jz';
 
 // Webdir path
 // Path where this tool resides in
-$server_path ='/var/www/LASCP/';
+$server_path ='/arma/www/';
 
 // ArmA directory path
 // Path where ArmA files reside in
-$arma_dir ='/data/a2oa/';
+$arma_dir ='/arma/game/';
 
 // Modlist
 $modlist ='@cba;@ace;@acex;@acex_sm;@fdf_podagorsk;@thirsk;@isla_duala;@glt_missilebox;@torabora;@fallujah;@ngs_capraia;';
@@ -38,13 +38,13 @@ $modlist ='@cba;@ace;@acex;@acex_sm;@fdf_podagorsk;@thirsk;@isla_duala;@glt_miss
 
 // Updater stuff:
 // In testing fase - so keeing it simple and seperate
-// That does mean that we now have to different Arma Dirs
+// That does mean that we now have two different Arma Dirs
 # This is the game folder (read from the config instead)
 #$armadir = "/data/a2oa_game";
-$armadir = "/data/a2oa";
+$armadir = "/arma/game";
 # This is the mid path datastore for sync (read from the config instead)
 #$syncdir = "/data/a2oa_test";
-$syncdir = "/data/a2oa_data";
+$syncdir = "/arma/sync";
 
 # List of mirrors (Should be in the configs)
 $mirrorlist = array("six.bssnet.dk");

@@ -1,11 +1,12 @@
 <?php
 /*
 Tier1 Server Control Pannel
-Version: 0.2
+Version: 0.3
 Date: 2011-02-27
 Author: Banshee
 Edit: BoSSMan_DK - 2011-04-27
 Edit: BoSSMan_DK - 2011-07-25 - Add Updater suff, updated modlist
+Edit: Banshee - 2011-08-09 - Changed paths to reflect new standard structure
 URL: http://going4.com
 
 Tier1 Server Control Pannel is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. Permissions beyond the scope of this license may be available at http://going4.com.

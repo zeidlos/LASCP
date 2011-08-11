@@ -34,7 +34,9 @@ if(!empty($_GET)) { $action=$_GET["action"]; }
 	
 	<div id="header">
     <div id="header_img">
-      &nbsp;
+<?php
+echo '<img border=0 src="'. $header_img .'">';
+?>
     </div>
 
 	</div>
@@ -122,7 +124,8 @@ case '' :
 	  echo('The server is not running. Now you can <br />');
 	  echo('<a href="index.php?action=upload"><span class="button">Upload a Mission</span></a><br />');
 	  echo('<a href="index.php?action=start"><span class="button">Start the server</span></a>');
-	  echo('<a href="index.php?action=update"><span class="button">Update the server</span></a>');
+	  echo('<a href="six-update-run.php"><span class="button">Update the server</span></a>');
+//	  echo('<a href="index.php?action=update"><span class="button">Update the server</span></a>');
   	}
 	break;
 }

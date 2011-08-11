@@ -25,6 +25,11 @@ body {
   margin-top:50px;
 }
 
+#updater {
+  margin-left:120px;
+  text-align:left;
+}
+
 #content {
   margin-left:120px;
 }

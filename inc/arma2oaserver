@@ -12,6 +12,7 @@
 ARMA_DIR=/data/a2oa
 CONFIG=../tier1ops_main.cfg
 PORT=2302
+BECONF=/data
 WEB_DIR=/var/www/LASCP
 PIDFILE=${ARMA_DIR}/${PORT}.pid
 RUNFILE=${ARMA_DIR}/${PORT}.run
@@ -110,7 +111,7 @@ case "$1" in
 	# launch the server...
 	    cd ${ARMA_DIR}
 	    echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] Starting server (port ${PORT})..."
-	    ${SERVER} >>${LOGFILE} 2>&1 -server -config=${CONFIG} -port=${PORT} -pid=${PIDFILE} ${OTHERPARAMS} -mod=${MODS}
+	    ${SERVER} >>${LOGFILE} 2>&1 -server -config=${CONFIG} -BEpath=${BECONF} -port=${PORT} -pid=${PIDFILE} ${OTHERPARAMS} -mod=${MODS}
 	    if [ -f ${RUNFILE} ]; then
 		echo >>${LOGFILE} "WATCHDOG ($$): [$(date)] Server died, waiting to restart..."
 		sleep 5s

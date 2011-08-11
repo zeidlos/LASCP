@@ -9,11 +9,11 @@
 #========               CONFIGURATION PARAMETERS                ========
 #======== MUST BE EDITED MANUALLY TO FIT YOUR SYSTEM PARAMETERS ========
 #=======================================================================
-ARMA_DIR=/data/a2oa
+ARMA_DIR=/arma/game
 CONFIG=../tier1ops_main.cfg
 PORT=2302
-BECONF=/data
-WEB_DIR=/var/www/LASCP
+BECONF=/arma
+WEB_DIR=/arma/www
 PIDFILE=${ARMA_DIR}/${PORT}.pid
 RUNFILE=${ARMA_DIR}/${PORT}.run
 LOGFILE=${WEB_DIR}/logfile.txt

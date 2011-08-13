@@ -72,12 +72,19 @@ body {
     background-repeat:no-repeat;
 }
 
+.login {
+    background-image:url("../img/icons/16px/administrative-docs.png");
+    background-repeat:no-repeat;
+}
 .logout {
     background-image:url("../img/icons/16px/sign-out.png");
     background-repeat:no-repeat;
     font-style: italic;
 }
 
+.inactive {
+    opacity:0.4;filter:alpha(opacity=40);
+}
 
 #content {
   margin-left:120px;

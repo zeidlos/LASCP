@@ -81,8 +81,8 @@ switch ($action) {
               if ($file_type=='application/octet-stream')
               {
                 echo("<p class=\"success\">$mission_name has been uploaded.</p><br /><br />");
-                move_uploaded_file($_FILES['mission_file']['tmp_name'], "./upload/$mission_name");
-                shell_exec('/usr/bin/sudo -u '.$sudo_user.' ./inc/cp_file.sh ./upload/'.$mission_name.'');
+                move_uploaded_file($_FILES['mission_file']['tmp_name'], "./uploads/$mission_name");
+                shell_exec('/usr/bin/sudo -u '.$sudo_user.' ./inc/cp_file.sh ./uploads/'.$mission_name.'');
               } else {
                 echo("<p class=\"danger\">Wrong file format</p><br /><br />");
                 echo('<a href="index.php?action=upload"><span class="button">Try again</span></a>');

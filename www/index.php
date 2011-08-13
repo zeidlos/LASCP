@@ -21,9 +21,11 @@ $running=0;
 $action='';
 if(!empty($_GET)) { $action=$_GET["action"]; }
 
+ require_once('header.php');
+ 
+ 
 
- require_once 'header.php';
-
+ 
 switch ($action) {
 
     case 'update' :
@@ -90,24 +92,26 @@ switch ($action) {
             break;
 
     case '' : 
-            $server_status = server_status();
-            if($server_status)
-            {
-              echo('Apparently the server runs at the moment.<br /> Get on Teamspeak, make sure noone is playing or <br /> testing on it. After you made 100% sure, you can<br /><br />');
-              echo('<a href="index.php?action=stop"><span class="button danger">STOP THE SERVER!</span></a>');
-            } 
-              else 
-            {
-              echo('The server is not running. Now you can <br />');
-              echo('<a href="index.php?action=upload"><span class="button">Upload a Mission</span></a><br />');
-              echo('<a href="index.php?action=start"><span class="button">Start the server</span></a>');
-              echo('<a href="six-update-run.php"><span class="button">Update the server</span></a>');
-    //	  echo('<a href="index.php?action=update"><span class="button">Update the server</span></a>');
+            if($login) {
+                $server_status = server_status();
+                if($server_status)
+                {
+                  echo('Apparently the server runs at the moment.<br /> Get on Teamspeak, make sure noone is playing or <br /> testing on it. After you made 100% sure, you can<br /><br />');
+                  echo('<a href="index.php?action=stop"><span class="button danger">STOP THE SERVER!</span></a>');
+                } 
+                  else 
+                {
+                  echo('The server is not running. Now you can <br />');
+                  echo('<a href="index.php?action=upload"><span class="button">Upload a Mission</span></a><br />');
+                  echo('<a href="index.php?action=start"><span class="button">Start the server</span></a>');
+                  echo('<a href="six-update-run.php"><span class="button">Update the server</span></a>');
+        //	  echo('<a href="index.php?action=update"><span class="button">Update the server</span></a>');
+                }
+            } else {
+                if(!$login) { echo('<span class="danger">You are not logged in!</span>');
+                }
             }
-            break;
+            break;           
     }
-    ?>
-</div>
-<?php
-require_once 'footer.php';
+require ('footer.php');
 ?>

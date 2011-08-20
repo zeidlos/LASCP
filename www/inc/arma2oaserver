@@ -10,7 +10,7 @@
 #======== MUST BE EDITED MANUALLY TO FIT YOUR SYSTEM PARAMETERS ========
 #=======================================================================
 ARMA_DIR=/arma/game
-CONFIG=../tier1ops_main.cfg
+CONFIG=${ARMA_DIR}/../tier1ops_main.cfg
 PORT=2302
 BECONF=/arma
 WEB_DIR=/arma/www
@@ -18,7 +18,7 @@ PIDFILE=${ARMA_DIR}/${PORT}.pid
 RUNFILE=${ARMA_DIR}/${PORT}.run
 LOGFILE=${WEB_DIR}/logfile.txt
 SERVER=${ARMA_DIR}/server
-OTHERPARAMS=-cpucount=8
+OTHERPARAMS=-cpucount=2
 MODFILE=${WEB_DIR}/inc/mods_acre.inc
 MODS=$(< ${MODFILE})
 
@@ -32,6 +32,7 @@ case "$1" in
 	if [ -f ${RUNFILE} ]; then
 	    $0 stop
 	fi
+        mv -f ${WEB_DIR}/uploads/* ${ARMA_DIR}/mpmissions/
 	echo "Starting ArmA 2 server..."
 	# file to mark we want server running...	
 	echo "go" >${RUNFILE}

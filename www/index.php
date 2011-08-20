@@ -56,7 +56,7 @@ switch ($action) {
 
     case 'stop' : 
             stop_server($server_path);
-            sleep(5); 
+            sleep(5);
             echo('<span class="success">Server stopped!</span>');
             echo('<a href="index.php"><span class="button">Go back</span></a>'); 
             break;
@@ -81,7 +81,6 @@ switch ($action) {
               {
                 echo("<p class=\"success\">$mission_name has been uploaded.</p><br /><br />");
                 move_uploaded_file($_FILES['mission_file']['tmp_name'], "./uploads/$mission_name");
-                shell_exec('/usr/bin/sudo -u '.$sudo_user.' ./inc/cp_file.sh ./uploads/'.$mission_name.' '.$arma_dir.'/mpmissions');
               } else {
                 echo("<p class=\"danger\">Wrong file format</p><br /><br />");
                 echo('<a href="index.php?action=upload"><span class="button">Try again</span></a>');

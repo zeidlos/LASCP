@@ -1,5 +1,6 @@
 !bin/bash
 
+apt-get install git apache2 
 adduser arma
 mkdir /arma
 mkdir /arma/game

@@ -1,5 +1,4 @@
 <?php
-include($server_path.'inc/config.php');
 /*
 Linux Arm Server Control Pannel
 Version: 0.2
@@ -20,14 +19,15 @@ function server_status()
 
 function stop_server($server_path)
 {
+  global $sudo_user;
   shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'/inc/arma2oaserver stop');
 //  shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'/inc/testserver stop');
 }
 
 function start_server($server_path)
 {
+    global $sudo_user;
     shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'inc/arma2oaserver start');
-//    shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'inc/testserver start');
  }
 
 ?>

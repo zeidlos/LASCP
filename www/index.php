@@ -12,7 +12,6 @@ Tier1 Server Control Pannel is licensed under a Creative Commons Attribution-Non
 http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
 
-
 require_once('./inc/config.php');
 //or die("Couldn't load config");
 require_once ('./inc/functions.php');

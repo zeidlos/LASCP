@@ -1,13 +1,14 @@
 <?php
 
-include_once 'header.php';
-
 require_once('./inc/config.php');
 //or die("Couldn't load config");
 require_once ('./inc/functions.php');
 //or die("Couldn't load functions");
 $running=0;
 $action='';
+
+require_once('header.php');
+
 if(!empty($_GET)) { $action=$_GET["action"]; }
 
 switch ($action) {

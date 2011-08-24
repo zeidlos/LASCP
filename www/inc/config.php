@@ -7,7 +7,10 @@ Author: Banshee
 Edit: BoSSMan_DK - 2011-04-27
 Edit: BoSSMan_DK - 2011-07-25 - Add Updater suff, updated modlist
 Edit: Banshee - 2011-08-09 - Changed paths to reflect new standard structure
-URL: http://going4.com
+Edit: Banshee - 2011-08-24 - Removed deprechated Modset stuff.
+ 
+ * 
+ * URL: http://tier1ops.eu
 
 Tier1 Server Control Pannel is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License. Permissions beyond the scope of this license may be available at http://going4.com.
 
@@ -15,8 +18,8 @@ http://creativecommons.org/licenses/by-nc-sa/3.0/
 */
 
 
-// URL of Header graphic. Static or relative.
-$header_img = 'http://tier1ops.eu/forum/styles/we_universal/theme/images/header_1.jpg';
+// URL of Header graphic. Static or relative. -- Not in use at the moment.
+$header_img = '';
 
 // Servername. Will get displayed on the interface.
 // It won't be used in for the serverconfig.
@@ -33,12 +36,12 @@ $server_path ='/arma/www/';
 // Path where ArmA files reside in
 $arma_dir ='/arma/game/';
 
-// Modlist
-$modlist ='@cba;@ace;@acex;@acex_sm;@fdf_podagorsk;@thirsk;@isla_duala;@glt_missilebox;@torabora;@fallujah;@ngs_capraia;';
-// $modlist ='@cba;@ace;@acex;@acex_sm;@ngs_capraia;';
+$lascp_version = 'v0.25';
+
+
 
 // Updater stuff:
-// In testing fase - so keeing it simple and seperate
+// In testing phase - so keeing it simple and seperate
 // That does mean that we now have two different Arma Dirs
 # This is the game folder (read from the config instead)
 #$armadir = "/data/a2oa_game";

@@ -10,7 +10,7 @@
 	
 <div id="header">
     <?php
-    echo('<b>LASCP v0.3 &ndash;');
+    echo('<b>LASCP '.$lascp_version.' &ndash;');
     $login='yes';
     echo "$server_name on ";
     echo $_SERVER['SERVER_ADDR'];
@@ -22,10 +22,10 @@
             <a href="index.php">Home</a>
         </li>
         <li class="settings <?php if(!$login) { echo('inactive'); } ?>">
-            <?php if($login) { echo('<a href="admin.php?actions=settings">'); } ?>Settings<?php if(!$login) { echo('</a>'); } ?>
+            <?php if($login) { echo('<a href="admin.php?action=settings">'); } ?>Settings<?php if(!$login) { echo('</a>'); } ?>
         </li>
         <li class="users <?php if(!$login) { echo('inactive'); } ?>">
-            <?php if($login) { echo('<a href="admin.php?actions=users">'); } ?>Usermanagement<?php if(!$login) { echo('</a>'); } ?>
+            <?php if($login) { echo('<a href="admin.php?action=users">'); } ?>Usermanagement<?php if(!$login) { echo('</a>'); } ?>
         </li>
         <li class="servers <?php if(!$login) { echo('inactive'); } ?>">
             <?php if($login) { echo('<a href="admin.php?action=servers">'); } ?>Virtual Servers<?php if(!$login) { echo('</a>'); } ?>

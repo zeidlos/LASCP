@@ -9,17 +9,17 @@
 #========               CONFIGURATION PARAMETERS                ========
 #======== MUST BE EDITED MANUALLY TO FIT YOUR SYSTEM PARAMETERS ========
 #=======================================================================
-ARMA_DIR=/arma/game
+ARMA_DIR=$2
 CONFIG=${ARMA_DIR}/../tier1ops_main.cfg
-PORT=2302
-BECONF=/arma
-WEB_DIR=/arma/www
+PORT=$6
+BECONF=$4
+WEB_DIR=$3
 PIDFILE=${ARMA_DIR}/${PORT}.pid
 RUNFILE=${ARMA_DIR}/${PORT}.run
 LOGFILE=${WEB_DIR}/logfile.txt
 SERVER=${ARMA_DIR}/server
-OTHERPARAMS=-cpucount=2
-MODFILE=${WEB_DIR}/inc/mods_acre.inc
+OTHERPARAMS=-cpucount=$5
+MODFILE=${WEB_DIR}/inc/$7
 MODS=$(< ${MODFILE})
 
 #=======================================================================

@@ -10,11 +10,21 @@
 	
 <div id="header">
     <?php
+    $lascp_latest_version = file_get_contents('http://tier1ops.eu/lascp_latest_version.txt');
     echo('<b>LASCP '.$lascp_version.' &ndash;');
     $login='yes';
     echo "$server_name on ";
     echo $_SERVER['SERVER_ADDR'];
-    echo '</b><br /><br />';
+    echo '</b><br />';
+    if (!$lascp_latest_version) { 
+        echo('<span class="danger">Could not fetch latest info from the LASCP root server. Please check your internet connection and <a href="mailto:banshee@tier1ops.eu">inform us.</a>');
+    }
+    if ($lascp_latest_version) {
+        if ($lascp_version != $lascp_latest_version) {
+            echo('<span class="danger">You are not running the latest Version of the LASCP. <a href="#">Please upgrade to '.$lascp_latest_version.'.</a>');
+        }
+    }
+    echo '<br /><br />';
     ?>
 
     <ul class="navigation admin">

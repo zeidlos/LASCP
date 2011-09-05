@@ -20,15 +20,26 @@ function server_status()
 function stop_server($server_path)
 {
   global $sudo_user;
+  global $start_string;
   shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'/inc/arma2oaserver stop');
-//  shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'/inc/testserver stop');
 }
+
 
 function start_server($server_path)
 {
+    global $start_string;
     global $sudo_user;
-    shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'inc/arma2oaserver start');
+    shell_exec(''.$server_path.'/inc/arma2oaserver start '.$start_string.' ');
  }
 
+ /*
+function start_server($server_path)
+{
+    global $start_string;
+    global $sudo_user;
+    shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'inc/arma2oaserver start '.$start_string.' ');
+ }
+*/
+ 
 ?>
 

@@ -28,13 +28,13 @@ $server_name = 'Tier1 Operations';
 // Sudo User. User wich the server will own the server process
 $sudo_user = 'jz';
 
-// Webdir path
+// Webdir path (without trailing slash!)
 // Path where this tool resides in
-$server_path ='/arma/www/';
+$server_path ='/arma/www';
 
-// ArmA directory path
+// ArmA directory path (without trailing slash!)
 // Path where ArmA files reside in
-$arma_dir ='/arma/game/';
+$arma_dir ='/arma/game';
 
 $lascp_version = 'v0.25';
 

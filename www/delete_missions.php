@@ -20,4 +20,6 @@ if(isset($_POST['missions'])) {
     }
   }
 }
+
+require_once('footer.php');
 ?>

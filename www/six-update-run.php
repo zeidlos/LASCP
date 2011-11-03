@@ -183,12 +183,5 @@ function flush_buffers(){
     ob_start(); 
 } 
 
+require_once('footer.php');
 ?>
-</div>
-<div id="footer">
-<a href="http://dev-heaven.net/projects/lascp">LASCP</a> v0.2 brought to you by <a href="http://tier1ops.eu">Tier1</a>
-</div>
-</div>
-</div>
-
-</body></html>

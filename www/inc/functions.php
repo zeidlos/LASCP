@@ -31,13 +31,6 @@ function start_server($server_path)
     global $sudo_user;
     shell_exec(''.$server_path.'/inc/arma2oaserver start '.$start_string.' ');
  }
-
-
-function start_server($server_path)
-{
-    global $start_string;
-    global $sudo_user;
-    shell_exec('/usr/bin/sudo -u '.$sudo_user.' '.$server_path.'inc/arma2oaserver start '.$start_string.' ');
- } 
+ 
 ?>
 

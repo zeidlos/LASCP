@@ -26,7 +26,7 @@ $header_img = '';
 $server_name = 'Tier1 Operations';
 
 // Sudo User. User wich the server will own the server process
-$sudo_user = 'jz';
+$sudo_user = 'arma';
 
 // Webdir path (without trailing slash!)
 // Path where this tool resides in

@@ -100,7 +100,7 @@ switch ($action) {
                 {
                   echo('The server is not running. Now you can <br />');
                   echo('<a href="index.php?action=upload"><span class="button">Upload a Mission</span></a><br />');
-                  echo('<a href="list_missions.php"><span class="button">List Missions</span></a>');
+                  echo('<a href="list_missions.php"><span class="button">Delete Missions</span></a>');
                   echo('<a href="index.php?action=start"><span class="button">Start the server</span></a>');
                   echo('<a href="six-update-run.php"><span class="button">Update the server</span></a>');
         //	  echo('<a href="index.php?action=update"><span class="button">Update the server</span></a>');

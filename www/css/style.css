@@ -82,6 +82,11 @@ body {
     font-style: italic;
 }
 
+#missions_list {
+   text-align:left;
+   line-height:150%;
+}
+
 .inactive {
     opacity:0.4;filter:alpha(opacity=40);
 }

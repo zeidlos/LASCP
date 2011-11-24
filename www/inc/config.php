@@ -36,6 +36,9 @@ $server_path ='/arma/www';
 // Path where ArmA files reside in
 $arma_dir ='/arma/game';
 
+$arma_missions_dir='/arma/game/MPMissions';
+$arma_deleted_missions_dir='/arma/game/MPMissions/deleted';
+
 $lascp_version = 'v0.25';
 
 

@@ -6,7 +6,7 @@ require_once('header.php');
 <?php
 
 if(!file_exists($arma_deleted_missions_dir)) {
-  mkdir($arma_deleted_missions_dir,0770);
+  mkdir($arma_deleted_missions_dir,0755);
 }
 
 if(isset($_POST['missions'])) {

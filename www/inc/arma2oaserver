@@ -57,18 +57,21 @@ case "$1" in
 	
 	
     status)
-	if [ -f ${RUNFILE} ]; then
-	    echo "Server should be running..."
-	else
-	    echo "Server should not be running..."
-	fi
-	if [ -f ${PIDFILE} ]; then
-	    PID=$(< ${PIDFILE})
-	    echo "PID file exists (PID=${PID})..."
-	    if [ -f /proc/${PID}/cmdline ]; then
-		echo "Server process seems to be running..."
-	    fi
-	fi
+        if [ -f ${RUNFILE} ]; then
+            if [ -f ${PIDFILE} ]; then
+                PID=$(< ${PIDFILE})
+                if [ -f /proc/${PID}/cmdline ]; then
+                    echo "UP"
+                else
+                    echo "CRASHED"
+                fi
+            else
+                echo "FAILED START"
+            fi
+        else
+            echo "DOWN"
+        fi
+
 	;;
 	
 	
